@@ -26,12 +26,6 @@ gulp.task(
                     ]
                 },
                 plugins: [
-                    // http://webpack.github.io/docs/list-of-plugins.html#uglifyjsplugin
-                    new webpack.optimize.UglifyJsPlugin({
-                        compress: {
-                            warnings: false
-                        }
-                    }),
                     // http://webpack.github.io/docs/list-of-plugins.html#bannerplugin
                     new webpack.BannerPlugin(
                         '/*\n' +
@@ -48,7 +42,7 @@ gulp.task(
                 output: {
                     library: pkg.name,
                     libraryTarget: 'umd',
-                    filename: pkg.name + '.min.js'
+                    filename: pkg.name + '.js'
                 }
             }))
             .pipe(gulp.dest('./dist'));

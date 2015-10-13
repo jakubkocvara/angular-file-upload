@@ -437,8 +437,9 @@ export default (fileUploaderOptions, $rootScope, $http, $window, FileLikeObject,
             if(typeof(item._file.size) != 'number') {
                 throw new TypeError('The file specified is no longer valid');
             }
-
-            form.append(item.alias, item._file, item.file.name);
+                    
+            var blob = new Blob([item._file]);
+            form.append(item.alias, blob, item.file.name);
 
             xhr.upload.onprogress = (event) => {
                 var progress = Math.round(event.lengthComputable ? event.loaded * 100 / event.total : 0);
